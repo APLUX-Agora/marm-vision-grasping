@@ -14,8 +14,9 @@ history and source of [APLUX-Official/marm_A1](https://github.com/APLUX-Official
 - `models`: mechanical model files.
 
 Reference software: Ubuntu 22.04, ROS 2 Humble, MoveIt 2, OpenCV, tf2 and the
-project's calibration tools. The Agora catalog uses QCS6490 as its reference
-compute platform. This copy does not constitute a new BSP or hardware qualification.
+project's calibration tools. The Agora prototype targets QCS8550 with Ubuntu 22.04 for software validation.
+This target is pending on-device qualification; this copy does not establish BSP,
+ROS 2, peripheral, or complete robot compatibility.
 
 ## Hardware preparation
 

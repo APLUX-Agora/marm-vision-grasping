@@ -6,6 +6,7 @@ Agora keeps its three software steps: select content, select compute hardware an
 system, then deploy and validate. The remaining task sections describe the real
 hardware. Choose a validation method based on the peripherals actually connected.
 
+The prototype targets QCS8550 / Ubuntu 22.04. On-device adaptation is pending.
 This revision provides the task structure and source reference. It does not supply
 a newly qualified one-command deployment, recorded-input adapter or simulator.
 
