@@ -42,7 +42,10 @@ inside it when you choose to update.
 Run the blocks in order. Stop at any failed command. Existing dependencies may be
 kept. Use ROS's system Python, without a separate venv or pip replacement of NumPy.
 
-Configure the official ROS source if it has not already been configured. See the
+**If step 1 reports `CHECKED ROS repository`, skip this first block.**
+Keep the existing ROS source and signing key; installing a second source can
+create a `Signed-By` conflict. Run this block only for `NEEDS_SETUP ROS repository`
+after confirming there is no existing ROS source. See the
 [ROS Humble installation guide](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html).
 
 ```bash

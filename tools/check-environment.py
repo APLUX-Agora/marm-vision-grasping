@@ -30,6 +30,12 @@ try:
  check('APT dependencies',dependencies.returncode==0,'consistent' if dependencies.returncode==0 else 'inconsistent; ask the cloud administrator before installing dependencies')
 except (OSError,subprocess.TimeoutExpired) as exc:
  check('package health',False,str(exc))
+try:
+ policy=subprocess.run(['apt-cache','policy','ros-humble-ros-base'],capture_output=True,text=True,timeout=30,env={**os.environ,'LC_ALL':'C'})
+ available=policy.returncode==0 and 'Candidate:' in policy.stdout and 'Candidate: (none)' not in policy.stdout
+ print(('CHECKED' if available else 'NEEDS_SETUP')+' ROS repository: '+('configured; skip source initialization in step 3' if available else 'configure the ROS source in step 3'))
+except (OSError,subprocess.TimeoutExpired):
+ print('NEEDS_SETUP ROS repository: inspect APT sources before step 3')
 for name,ok in [('ROS 2 Humble',Path('/opt/ros/humble/setup.bash').is_file()),('colcon',bool(shutil.which('colcon')))]:
  print(('CHECKED' if ok else 'NEEDS_SETUP')+' '+name+(': available' if ok else ': install in step 3'))
 print('FAILED: fix platform/workspace checks before continuing.' if failed else 'CHECKED: platform ready; resolve NEEDS_SETUP items in step 3.')
