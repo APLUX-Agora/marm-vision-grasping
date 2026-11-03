@@ -59,10 +59,10 @@ See [the Agora task guide](docs/AGORA_TASK_GUIDE.md) for scope and expected resu
 The supplied calibration files are examples for a specific assembly, not reusable
 calibration for every device. Keep the motion area clear during physical tests.
 
-## Agora validation boundary
+## Agora workflow
 
-The task combines software validation, hardware preparation, connection notes and
-calibration guidance. Software running on a board does not establish that camera
+The task combines software validation with documents for local hardware assembly,
+connections, bring-up and calibration. Cloud devices validate software only. Software running on a board does not establish that camera
 calibration or physical grasping has been validated. The current Agora cloud pool
 has QCS8550 compute boards, without a connected MARM arm or project camera.
 This repository has not been qualified for complete cloud robot reproduction.

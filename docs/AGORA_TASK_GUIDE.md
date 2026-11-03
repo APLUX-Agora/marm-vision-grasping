@@ -3,12 +3,27 @@
 ## Software validation
 
 Agora keeps its three software steps: select content, select compute hardware and
-system, then deploy and validate. The remaining task sections describe the real
-hardware. Choose a validation method based on the peripherals actually connected.
+system, then deploy and validate. The remaining task sections are documents guiding the user through local
+hardware assembly, wiring, bring-up and calibration. Cloud devices validate software only. Choose a validation method based on the peripherals actually connected.
 
 The prototype targets QCS8550 / Ubuntu 22.04. On-device adaptation is pending.
 This revision provides the task structure and source reference. It does not supply
 a newly qualified one-command deployment, recorded-input adapter or simulator.
+
+## Assemble and connect, step by step
+
+1. Compare the parts with the mechanical files in `models/`, then secure the base
+   to the workbench.
+2. Install joint servos and links in the order shown by the mechanical design.
+   Record each controller channel and its matching joint.
+3. Install the gripper and camera bracket. Record whether the camera is mounted
+   on the arm (Eye-in-Hand) or outside it (Eye-on-Base).
+4. With power off, connect servos and their specified supply according to the
+   controller pinout. Confirm supply ratings and grounding.
+5. Connect the camera to QCS8550 over USB, and connect the servo controller to the
+   host through USB-to-serial.
+6. Identify the device paths below, then continue with local component bring-up
+   and calibration. No cloud terminal command assembles or connects this hardware.
 
 ## Identify connected devices
 
