@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(capture_image)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,6 +12,8 @@ find_package(ament_cmake_auto REQUIRED)
 find_package(yaml-cpp REQUIRED)
 ament_auto_find_build_dependencies()
 
+option(AGORA_SOFTWARE_ONLY "Build only the headless RGB perception node" OFF)
+if(NOT AGORA_SOFTWARE_ONLY)
 # 自动添加可执行文件（会自动处理 include 目录和依赖）
 ament_auto_add_executable(
   capture_image_node
@@ -36,6 +40,8 @@ ament_target_dependencies(aruco_object_pose_node
   ament_index_cpp
 )
 
+endif()
+
 # RGB检测节点
 ament_auto_add_executable(rgb_detect_pose_node src/rgb_detect_pose_node.cpp)
 ament_target_dependencies(rgb_detect_pose_node 
@@ -59,12 +65,10 @@ install(DIRECTORY include/
   DESTINATION include
 )
 
-# 安装ost.yaml文件到share目录
-install(FILES ost.yaml
-  DESTINATION share/${PROJECT_NAME}
-)
-
-
+# Physical calibration is supplied by the user, never synthetic defaults.
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/ost.yaml")
+  install(FILES ost.yaml DESTINATION share/${PROJECT_NAME})
+endif()
 
 # 测试相关（保持不变）
 if(BUILD_TESTING)

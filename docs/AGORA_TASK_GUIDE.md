@@ -2,13 +2,15 @@
 
 ## Software validation
 
-Agora keeps its three software steps: select content, select compute hardware and
-system, then deploy and validate. The remaining task sections are documents guiding the user through local
-hardware assembly, wiring, bring-up and calibration. Cloud devices validate software only. Choose a validation method based on the peripherals actually connected.
+All Agora tasks use: select content, prepare runtime conditions, run and validate.
+If the content requires peripherals, assembly and wiring appear in step 2; local
+bring-up and calibration appear in step 3. Cloud devices validate software only.
 
-The prototype targets QCS8550 / Ubuntu 22.04. On-device adaptation is pending.
-This revision provides the task structure and source reference. It does not supply
-a newly qualified one-command deployment, recorded-input adapter or simulator.
+Use [the software deployment guide](AGORA_DEPLOY.md) for the five executable steps.
+It builds the existing RGB perception node and tests it with synthetic input and
+geometry. There is no camera, serial device or robot motion in this test. The
+current target is QCS8550 / Ubuntu 22.04; software-test results do not establish
+complete robot, BSP, physical calibration or motion-planning compatibility.
 
 ## Assemble and connect, step by step
 

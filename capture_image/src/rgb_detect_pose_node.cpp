@@ -37,6 +37,7 @@ public:
     RGBDetectPoseNode()
         : Node("rgb_detect_pose_node")
     {
+        this->declare_parameter<std::string>("camera_calibration_file", "");
         // 从ost.yaml文件读取相机内参
         if (!loadCameraParameters()) {
             RCLCPP_ERROR(this->get_logger(), "Failed to load camera parameters from ost.yaml");
@@ -198,6 +199,8 @@ private:
             }
             
             std::string yaml_file;
+            const auto explicit_file = this->get_parameter("camera_calibration_file").as_string();
+            if (!explicit_file.empty()) possible_paths = {explicit_file};
             bool file_found = false;
             
             // 查找存在的文件

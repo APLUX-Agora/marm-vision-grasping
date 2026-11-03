@@ -35,16 +35,16 @@ USB-to-serial, then connect the servos according to that controller's pinout.
 Power the actuators using the specified supply, not directly from the host's USB
 port. Confirm grounding and interface definitions against the actual hardware.
 
-## Get the source
+## Software-only cloud test
 
-```bash
-git clone https://github.com/APLUX-Agora/marm-vision-grasping.git
-```
+Follow [the five-step deployment guide](docs/AGORA_DEPLOY.md): environment check,
+get code, set up dependencies, get test resources, run a test.
 
-Use the ROS 2 workspace convention and resolve the dependencies declared in the
-packages before building. `easy_handeye2` is an external prerequisite: it is not
-included as an active package in this upstream revision. Do not treat the editor
-history under `.history` as an installed dependency.
+The headless path builds the real RGB ROS node and feeds it synthetic input.
+It checks color detection, a known test pose and the annotated output image. No
+camera, serial controller, arm, MoveIt planner or neural-model download is needed.
+It does not validate physical grasping or NPU inference. The software-only build
+is selected explicitly with `AGORA_SOFTWARE_ONLY=ON`.
 
 ## Reproduction order
 
