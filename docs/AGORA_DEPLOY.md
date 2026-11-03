@@ -22,7 +22,9 @@ python3 "$AGORA_WORKSPACE/check-environment.py" --soc "$AGORA_SOC" --ubuntu '22.
 ```
 
 `CHECKED` means the check passed. `FAILED` means stop and fix the reported platform,
-path or space requirement. `NEEDS_SETUP` means install the missing tools in step 3.
+path, space or package-health requirement. Unfinished dpkg transactions or
+inconsistent APT dependencies must be handled by the cloud administrator; the
+check never runs automatic repair. `NEEDS_SETUP` means install the missing tools in step 3.
 The SoC argument records the selected target; it does not prove BSP compatibility.
 The check creates the workspace but does not install dependencies.
 
