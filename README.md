@@ -15,8 +15,9 @@ history and source of [APLUX-Official/marm_A1](https://github.com/APLUX-Official
 
 Reference software: Ubuntu 22.04, ROS 2 Humble, MoveIt 2, OpenCV, tf2 and the
 project's calibration tools. The Agora prototype targets QCS8550 with Ubuntu 22.04 for software validation.
-This target is pending on-device qualification; this copy does not establish BSP,
-ROS 2, peripheral, or complete robot compatibility.
+The headless RGB software test passed on a QCS8550 board running Ubuntu 22.04.2
+and ROS 2 Humble (2026-11-03): color, pose and annotated-image checks all passed.
+This covers the software-only path, not peripheral or complete robot compatibility.
 
 ## Hardware preparation
 

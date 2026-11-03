@@ -7,6 +7,10 @@ not open a camera or serial device, start an arm controller, run MoveIt planning
 move a robot, or validate NPU inference. Physical assembly and calibration remain
 in the [task guide](AGORA_TASK_GUIDE.md).
 
+Validated on QCS8550 / Ubuntu 22.04.2 / ROS 2 Humble on 2026-11-03.
+The RGB node built in about 13 seconds; all three software checks passed.
+Use a healthy APT/dpkg baseline and keep an existing ROS source configuration.
+
 ## 1. Check the environment
 
 Choose your own absolute workspace. Keep the same terminal for the steps below.
